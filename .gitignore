@@ -1,1 +1,17 @@
 .python-version
+*.DS_Store
+__pycache__
+/cutouts
+/non-vehicles
+/vehicles
+test_video.mp4
+project_video.mp4
+generate_3d_plot.py
+get_hog.py
+heat.py
+hog_classify.py
+hog_sub_sampling_window_search.py
+norm_shuffle.py
+search_and_classify.py
+sliding_window.py
+spatial_binning.py
