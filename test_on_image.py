@@ -15,8 +15,8 @@ def create_2_columns_subplot(fst_col_imgs, snd_col_imgs):
         plt.imshow(fst_col_imgs[i])
         plt.subplot(6, 2, i*2)
         plt.imshow(snd_col_imgs[i])
-    # plt.show()
-    plt.savefig("output_images/result.png")
+    plt.show()
+    # plt.savefig("test_video_frames/result.png")
 
 dist_pickle = pickle.load( open("svc_pickle.p", "rb" ) )
 svc = dist_pickle["svc"]
@@ -31,7 +31,7 @@ ystart = 400
 ystop = 656
 scale = 1.5
 
-test_img_names = glob.glob('test_images/*.jpg')
+test_img_names = glob.glob('test_video_frames/*.jpg')
 count = len(test_img_names)
 fst_col_imgs = []
 snd_col_imgs = []
@@ -41,5 +41,6 @@ for test_img_name in test_img_names:
     out_img = find_cars(img, ystart, ystop, scale, svc, X_scaler, orient, pix_per_cell, cell_per_block, spatial_size, hist_bins)
     snd_col_imgs.append(out_img)
     plt.imshow(out_img)
-    plt.savefig("output_images/"+test_img_name.replace("test_images/",""))
+    plt.axis("off")
+    plt.savefig("test_video_frames/processed"+test_img_name.replace("test_video_frames/",""))
 create_2_columns_subplot(fst_col_imgs, snd_col_imgs)
